@@ -1,0 +1,15 @@
+del "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\counter.bat"
+del "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\crash.bat"
+del "%AppData%\Microsoft\Windows\Start Menu\Programs\Startup\terminate.bat"
+del /y "%AppData%\Kitty" 
+
+call :MsgBox "Nyan cat has been removed from your system. Please be more careful when downloading files next time, as they could be much worse than Nyan cat. If I had chosen to do so, I could have encrypted every personal file on your computer, and held them from you until you paid a ransom. I decided not to, but there are many others out there that are not so nice. To minimize the chances of this happening to you, there are a few precautions you should take. 1. Do not run sketchy files on your PC; that is how Nyan Cat was able to run. You somehow either ran this file on your computer, or it was run by somebody else. 2. Do not click on sketchy links; clicking on a link you receive in an email, or that you aren't sure if the site is safe can lead to the same result as Nyan cat, or much worse.  " 
+call :MsgBox "3. Have an antivirus program installed; I recommend either Malwarebytes or Bitdefender, as these programs both do an amazing job for a relatively low price. They make a difference, and could protect you from things much worse than Nyan cat. 4. Keep backups of all of your personal files; You should keep backups of your files, either on an external drive, that you back up regularly (and is not connected to your system unless you are saving backups) or a cloud service, as these steps will ensure that you have protection against RansomWare, should your computer be attacked by it. By the way, I could have installed randomware on your computer just as easily as Nyan cat- I just didn't. Others will."
+call :MsgBox "5. Do not reuse passwords on online sites; This one won't protect your computer from a virus, but if a server is attacked, and hackers steal your email and password from a site, and you reuse those same email and passwords on another site, then the hackers could have access to both sites- This is commonly used to steal bank information or log into things like Amazon- places you definately don't want hackers accessing. (Search up SQL Injection to learn more about this.) And lastly, just use common sense. It keeps you away from most of the baddies on the internet. But for now, good luck, and browse the internet safely. Also remember I could have done literally anything to your PC. You're welcome."
+
+:MsgBox prompt type title
+    setlocal enableextensions
+    set "tempFile=%temp%\%~nx0.%random%%random%%random%vbs.tmp"
+    >"%tempFile%" echo(WScript.Quit msgBox("%~1",%~2,"%~3") & cscript //nologo //e:vbscript "%tempFile%"
+    set "exitCode=%errorlevel%" & del "%tempFile%" >nul 2>nul
+    endlocal & exit /b %exitCode%
